@@ -14,6 +14,10 @@
 		B46545E71A23CC450019872B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B46545E61A23CC450019872B /* Images.xcassets */; };
 		B46545EA1A23CC450019872B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B46545E81A23CC450019872B /* LaunchScreen.xib */; };
 		B46545F61A23CC460019872B /* bi_ios_coremotionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B46545F51A23CC460019872B /* bi_ios_coremotionTests.m */; };
+		B46546041A23D3A00019872B /* dominik.png in Resources */ = {isa = PBXBuildFile; fileRef = B46546001A23D3A00019872B /* dominik.png */; };
+		B46546051A23D3A00019872B /* dominik@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B46546011A23D3A00019872B /* dominik@2x.png */; };
+		B46546061A23D3A00019872B /* fourth.png in Resources */ = {isa = PBXBuildFile; fileRef = B46546021A23D3A00019872B /* fourth.png */; };
+		B46546071A23D3A00019872B /* fourth@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B46546031A23D3A00019872B /* fourth@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +44,10 @@
 		B46545EF1A23CC460019872B /* bi-ios-coremotionTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "bi-ios-coremotionTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B46545F41A23CC460019872B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B46545F51A23CC460019872B /* bi_ios_coremotionTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = bi_ios_coremotionTests.m; sourceTree = "<group>"; };
+		B46546001A23D3A00019872B /* dominik.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dominik.png; sourceTree = "<group>"; };
+		B46546011A23D3A00019872B /* dominik@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dominik@2x.png"; sourceTree = "<group>"; };
+		B46546021A23D3A00019872B /* fourth.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fourth.png; sourceTree = "<group>"; };
+		B46546031A23D3A00019872B /* fourth@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fourth@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +71,7 @@
 		B46545CD1A23CC450019872B = {
 			isa = PBXGroup;
 			children = (
+				B46545FF1A23D3A00019872B /* resources */,
 				B46545D81A23CC450019872B /* bi-ios-coremotion */,
 				B46545F21A23CC460019872B /* bi-ios-coremotionTests */,
 				B46545D71A23CC450019872B /* Products */,
@@ -117,6 +126,17 @@
 				B46545F41A23CC460019872B /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B46545FF1A23D3A00019872B /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				B46546001A23D3A00019872B /* dominik.png */,
+				B46546011A23D3A00019872B /* dominik@2x.png */,
+				B46546021A23D3A00019872B /* fourth.png */,
+				B46546031A23D3A00019872B /* fourth@2x.png */,
+			);
+			path = resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -200,8 +220,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				B46545E51A23CC450019872B /* Main.storyboard in Resources */,
+				B46546051A23D3A00019872B /* dominik@2x.png in Resources */,
+				B46546041A23D3A00019872B /* dominik.png in Resources */,
 				B46545EA1A23CC450019872B /* LaunchScreen.xib in Resources */,
 				B46545E71A23CC450019872B /* Images.xcassets in Resources */,
+				B46546061A23D3A00019872B /* fourth.png in Resources */,
+				B46546071A23D3A00019872B /* fourth@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
