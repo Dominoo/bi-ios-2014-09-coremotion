@@ -22,8 +22,7 @@
 @property (nonatomic,weak) UILabel* label;
 @property (nonatomic,strong) UIImageView* imageView;
 @property (nonatomic,strong) CLLocationManager *locationManager;
-
-
+@property (nonatomic,assign) CGFloat heading;
 @end
 
 @implementation ViewController
@@ -70,17 +69,21 @@
     //Camera stuff end
     
     self.manager = [[CMMotionManager alloc ] init];
+    
     self.manager.gyroUpdateInterval = 0.1;
     [self.manager startGyroUpdatesToQueue:[NSOperationQueue mainQueue] withHandler:^(CMGyroData *gyroData, NSError *error) {
         
-     //   double rotation = atan2(gyroData.rotationRate.x, gyroData.rotationRate.y) - M_PI;
+       // double rotation = atan2(gyroData.rotationRate.x, gyroData.rotationRate.y) - M_PI;
      //   self.imageView.transform = CGAffineTransformMakeRotation(rotation);
         
     }];
     
     self.manager.accelerometerUpdateInterval = 0.01;
     [self.manager startAccelerometerUpdatesToQueue:[NSOperationQueue mainQueue] withHandler:^(CMAccelerometerData *accelerometerData, NSError *error) {
-      //  double rotation = atan2(accelerometerData.acceleration.x, accelerometerData.acceleration.y) - M_PI;
+      
+        //NSLog(@"%f %f %f",accelerometerData.acceleration.x,accelerometerData.acceleration.y, accelerometerData.acceleration.z);
+        
+       //   double rotation = atan2(accelerometerData.acceleration.x, accelerometerData.acceleration.y) - M_PI;
       //  self.imageView.transform = CGAffineTransformMakeRotation(rotation);
     }];
     //CM Motion stuff
@@ -89,13 +92,16 @@
     self.manager.deviceMotionUpdateInterval = 0.01;
     [self.manager startDeviceMotionUpdatesToQueue:[NSOperationQueue mainQueue] withHandler:^(CMDeviceMotion *motion, NSError *error) {
         
-      //  double rotation = atan2(motion.gravity.x, motion.gravity.y) - M_PI;
-      //  self.imageView.transform = CGAffineTransformMakeRotation(rotation);
+     //   double rotation = atan2(motion.gravity.x, motion.gravity.y) - M_PI;
+     //   self.imageView.transform = CGAffineTransformMakeRotation(rotation);
+        
+        
     }];
     
     
     
   /*  [self.manager startDeviceMotionUpdatesUsingReferenceFrame:CMAttitudeReferenceFrameXTrueNorthZVertical toQueue:[NSOperationQueue currentQueue] withHandler:^(CMDeviceMotion *motion, NSError *error) {
+   
         double x = motion.magneticField.field.x;
         double y = motion.magneticField.field.y;
         double z = motion.magneticField.field.z;
@@ -113,13 +119,25 @@
     
     
     
-  /*  _locationManager= [[CLLocationManager alloc] init];
+   _locationManager= [[CLLocationManager alloc] init];
     [_locationManager requestWhenInUseAuthorization];
     _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     _locationManager.headingFilter = 1;
     _locationManager.delegate= self;
     [_locationManager startUpdatingHeading];
-   */
+   
+    
+    [self addObserver:self forKeyPath:@"heading" options:0 context:nil];
+    
+    
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+    
+    if (object == self && [keyPath isEqualToString:@"heading"])  {
+        self.label.text = [NSString stringWithFormat:@"%f", self.heading];
+    }
+    
     
     
 }
@@ -134,7 +152,9 @@
     theAnimation.duration = 0.5f;
     [_imageView.layer addAnimation:theAnimation forKey:@"animateMyRotation"];
     _imageView.transform = CGAffineTransformMakeRotation(newRad);
-    NSLog(@"%f (%f) => %f (%f)", manager.heading.trueHeading, oldRad, newHeading.trueHeading, newRad);
+    //[NSLog(@"%f ", newHeading.trueHeading);
+    
+    self.heading = newHeading.trueHeading;
 }
 
 
